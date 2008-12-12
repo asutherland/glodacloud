@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Word Cloud</title>
+    <script src="chrome://visophyte/content/visophyte.js" type="application/javascript;version=1.8"/>
+    <script src="chrome://visophyte/content/viso-wordcloud.js" type="application/javascript;version=1.8"/>
+    <script type="application/javascript;version=1.8">
+      var vCloud;
+      var vcCloud;
+      function setupVis(data) {
+        vCloud = new Vis();
+        vCloud.add(new DistinctColor("word", "fill", 0.4, 0.9));
+        vCloud.add(new LinearNorm("count", "normCount", 1, 36));
+        vCloud.add(new ClickCallback(handleWordClickThis, handleWordClick));
+        vCloud.add(new HoverToggler("toggled",
+                                    {fill: "red"}));
+        vCloud.add(new WordCloud("word", "normCount", "fill"));
+        
+        vcCloud = vCloud.makeContext(data, {});
+        
+        vcCloud.bindToCanvasNode(document.getElementById("wordy"), 0, 0);
+      }
+    </script>
+  </head>
+  <body bgcolor="#ffffff">
+    <canvas id="wordy" width="800" height="600"></canvas>
+  </body>
+</html>

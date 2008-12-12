@@ -1,0 +1,4 @@
+content	glodacloud	content/
+locale	glodacloud	en-US	locale/en-US/
+skin	glodacloud	classic/1.0	skin/
+overlay	chrome://messenger/content/messenger.xul	chrome://glodacloud/content/thunderbirdOverlay.xul
